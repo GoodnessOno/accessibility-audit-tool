@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Urlinput, Auditresults } from './components';
+import axios from 'axios';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [results, setResults] = useState(null);
 
-export default App;
+  const handleAudit = async (url) => {
+    try {
+      const response = await axios.post('/api/audit', { url });
+      setResults(response.data);
+    } catch (error) {
+      console.error('Error performing audit:', error);
+    }
+  };
+
+  return (
+    <div>
+      <Urlinput onSubmit={handleAudit} />
+      <Auditresults results={results} />
+         </div>
+       );
+     }
+
+     export default App;
+     
