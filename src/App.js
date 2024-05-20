@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Urlinput, Auditresults } from './components';
-import axios from 'axios';
 
 function App() {
   const [results, setResults] = useState(null);
