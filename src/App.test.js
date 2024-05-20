@@ -1,8 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders URL input form', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  
+  // Check if input field for URL is present
+  const urlInput = screen.getByPlaceholderText('Enter URL');
+  expect(urlInput).toBeInTheDocument();
+  
+  // Check if submit button is present
+  const submitButton = screen.getByRole('button', { name: 'Audit' });
+  expect(submitButton).toBeInTheDocument();
 });
+
