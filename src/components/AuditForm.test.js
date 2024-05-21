@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Urlinput from './components';
+import Urlinput from './urlinput/Urlinput';
 
 test('renders input and button', () => {
   const { getByPlaceholderText, getByText } = render(<Urlinput onSubmit={() => {}} />);
